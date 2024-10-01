@@ -87,7 +87,16 @@ namespace GroupProject_Service
 
         public Product GetProductByID(int id)
         {
-            throw new NotImplementedException();
+            var prod = (from p in dc.Products where p.productId == id select p).FirstOrDefault();
+
+            if (prod != null)
+            {
+                return prod;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Product GetProductbyName(string prod_name)
